@@ -24,7 +24,14 @@ wrong_btn = PhotoImage(file="./images/wrong.png")
 # Button functions
 def right_answer():
     french_words.remove(chosen_word)
-    game_on()
+    if len(french_words) > 0:
+        game_on()
+    else:
+        card = Canvas(width=800, height=526, bg=BACKGROUND_COLOR, highlightthickness=0)
+        card_img = card.create_image(400, 263, image=front_card)
+        text = card.create_text(400, 180, text="You have exhausted all flash cards", fill="black",
+                                font=("Arial", 30, "bold"))
+        card.grid(row=0, column=0, columnspan=2)
 
 
 def wrong_answer():
